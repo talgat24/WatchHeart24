@@ -1,3 +1,5 @@
+import math
+
 def average(data: list) -> float:
     """
     Calculate average value of the list.
@@ -7,28 +9,63 @@ def average(data: list) -> float:
     Returns:
         float: a floating point value representing the average of this list
     """
-    average = 0
-    ...
+    if not data:
+        return []  # Return empty list if the input list is empty
+    total = sum(data)
+    avg = total / len(data)
+    return round(avg, 2)
 
+def maximum(data: list) -> int:
+    """
+    Finds the maximum value in a list of numbers.
+    Args:
+        data (list): A list of numbers.
 
-def maximum(data: list) -> float:
+    Returns:
+        int: The maximum value in the list.
     """
-    INSERT DOCSTRING HERE
-    """
-    pass
+    if not data:
+        return [] # Return empty list if the input list is empty
+    max_value = data[0]
+    for value in data:
+        if value > max_value:
+            max_value = value
+    return max_value
 
 
 def variance(data: list) -> float:
     """
-    INSERT DOCSTRING HERE
-    (calculate population variance)
+    Calculate variance of the list.
+
+    Args:
+        data (list): A list of numbers.
+
+    Returns:
+        float: The variance of the list.
     """
-    pass
+    if not data:
+        return [] # Return empty list if the input list is empty
+    avg = average(data)
+    squared_diffs = [(x - avg) ** 2 for x in data]
+    variance = sum(squared_diffs) / len(data)  # Population variance
+    return round(variance, 2)
 
 
 def standard_deviation(data: list) -> float:
     """
-    INSERT DOCSTRING HERE
-    (calculate population standard deviation)
+    Calculate standard deviation of the list.
+
+    args:
+        data (list): A list of numbers.
+
+    Returns:
+        float: The standard deviation of the list.
     """
-    pass
+    # Calculate population standard deviation
+
+    if not data:
+        return []  # Return empty list if the input list is empty
+    var = variance(data)
+    std_dev = math.sqrt(var)  # Population standard deviation
+    return round(std_dev, 2)
+
